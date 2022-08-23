@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card as StoryCard, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import { Card as StoryCard } from 'react-bootstrap';
 
 export function Card(props) {
-  const { title, abstract, multimedia } = props;
+  const { title, abstract, multimedia, uri } = props;
+  const URL = uri.slice(6);
   const imageSrc = Array.isArray(multimedia) && multimedia[1].url;
 
   return (
@@ -13,7 +15,7 @@ export function Card(props) {
         <StoryCard.Text>
           {abstract}
         </StoryCard.Text>
-        <Button variant="primary">Read more</Button>
+        <Link to={`/${URL}`}>Read more</Link>
       </StoryCard.Body>
     </StoryCard>
   )
